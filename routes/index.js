@@ -33,7 +33,7 @@ router.get('/perchenoi', function (req, res) {
 
 router.get('/aboutus', function (req, res) {
     try {
-        res.render('frontpage/aboutUs.ejs');
+        res.redirect('/error');
     } catch (err) {
         res.status(404);
         res.redirect('/error');
