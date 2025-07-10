@@ -14,18 +14,18 @@ app.set('view engine', 'ejs'); //senza questo è necessario scrivere l'estension
 app.use(express.static(__dirname + '/public')); //per caricare correttamente i file css
 app.use(methodOverride('_method')); //permette di fare override del metodo usato in una richiesta al server
 
-const DBURI = process.env.ATLAS_URI;
+// const DBURI = process.env.ATLAS_URI;
 
-mongoose.connect(DBURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// mongoose.connect(DBURI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
 
-const conn = mongoose.connection;
+// const conn = mongoose.connection;
 
-conn.once('open', () => {
-    console.log('connessione avvenuta a mongoose');
-});
+// conn.once('open', () => {
+//     console.log('connessione avvenuta a mongoose');
+// });
 
 //senza questo non riesce a leggere quello che c'è nei form, serve perché i riferimenti req.body.funzionino effettivamente
 app.use(express.urlencoded({ extended: true }));
