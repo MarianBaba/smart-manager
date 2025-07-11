@@ -104,31 +104,39 @@ router.get('/login', function (req, res) {
     res.render('frontpage/login.ejs');
 });
 
-//LOGIN DI UN UTENTE
-router.post('/login', function (req, res) {
-    User.findOne({ username: req.body.username }, function (err, user) {
-        if (err) {
-            res.status(404);
-            res.redirect('/');
-        } else {
-            if (user != null && user.companyName === req.body.companyName) {
-                if (user.userRole === 'Admin') {
-                    passport.authenticate('local')(req, res, function () { //metodo di autenticazione fornito da Passport, si specifica la strategia e poi si definisce cosa fare se l'autenticazione va a buon fine
-                        res.status(200);
-                        res.redirect('/homeadmin');
-                    });
-                } else {
-                    passport.authenticate('local')(req, res, function () {
-                        res.status(200);
-                        res.redirect('/homeemployee');
-                    });
-                }
-            } else {
-                res.redirect('/');
-            }
-        }
-    });
-});
+
+router.post('/login', (req, res) => {
+    res.status(200);
+    res.json({
+        status: 200,
+        message: "login called"
+    })
+})
+
+// router.post('/login', function (req, res) {
+//     User.findOne({ username: req.body.username }, function (err, user) {
+//         if (err) {
+//             res.status(404);
+//             res.redirect('/');
+//         } else {
+//             if (user != null && user.companyName === req.body.companyName) {
+//                 if (user.userRole === 'Admin') {
+//                     passport.authenticate('local')(req, res, function () { //metodo di autenticazione fornito da Passport, si specifica la strategia e poi si definisce cosa fare se l'autenticazione va a buon fine
+//                         res.status(200);
+//                         res.redirect('/homeadmin');
+//                     });
+//                 } else {
+//                     passport.authenticate('local')(req, res, function () {
+//                         res.status(200);
+//                         res.redirect('/homeemployee');
+//                     });
+//                 }
+//             } else {
+//                 res.redirect('/');
+//             }
+//         }
+//     });
+// });
 
 //LOGOUT
 router.get('/logout', function (req, res) {
