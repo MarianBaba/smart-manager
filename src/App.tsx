@@ -1,11 +1,15 @@
+import SidebarLayout from "./layouts/SidebarLayout";
 
 const App = () => {
-  return(
+
+  return (
     <>
-        <h1>Hello World</h1>
-        <p>This is the simplest component possible</p>
+      <SidebarLayout>
+      <h1>Admin Dashboard</h1>
+      {/* other admin page content */}
+    </SidebarLayout>
     </>
-  )
+  );
 };
 
 export default App;
